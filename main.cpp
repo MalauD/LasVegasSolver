@@ -17,7 +17,7 @@ int main() {
     std::vector<Casino> Sample = {c1, c2, c3, c4, c5, c6};
     /*std::for_each(Sample.begin(), Sample.end(), [](const Casino& c) {
         std::cout << c;
-    });*/
+    });*/   
     
     DiceSet ds1 = DiceSet(4,DiceColors::Black,5);
     DiceSet ds3 = DiceSet({

@@ -87,21 +87,20 @@ int Casino::GetGainByColor(const DiceColors& color) const noexcept
         if(DicesCountOfRequest > maxDiceCount->second) return sortedTickets.front().GetValueInt();
         if(DicesCountOfRequest == maxDiceCount->second) return 0;
         
-        std::map<DiceColors, int> dicesWithSameCount;
-        std::copy_if(diceCountPerColor.begin(), diceCountPerColor.end(),
-                std::inserter(dicesWithSameCount, dicesWithSameCount.end()),
+        //std::map<DiceColors, int> dicesWithSameCount;
+        auto dicesWithSameCountCount = std::count_if(diceCountPerColor.begin(), diceCountPerColor.end(),
                 [&maxDiceCount](const auto& p){
                     return p.second == maxDiceCount->second;
                 });
 
-        if (dicesWithSameCount.size() <= 1) {
+        if (dicesWithSameCountCount <= 1) {
             diceCountPerColor.erase(maxDiceCount->first);
             sortedTickets.erase(sortedTickets.begin());
         }
         else {
-            std::for_each(dicesWithSameCount.begin(), dicesWithSameCount.end(),
-                [&diceCountPerColor](const auto& p) {
-                    diceCountPerColor.erase(p.first);
+            std::experimental::erase_if(diceCountPerColor,
+                [&maxDiceCount](const auto& p) {
+                    return p.second == maxDiceCount->second;
                 });
         }
     }

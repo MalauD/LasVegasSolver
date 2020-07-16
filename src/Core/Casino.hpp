@@ -7,6 +7,7 @@
 #include <stdexcept>
 #include <algorithm>
 #include <numeric>
+#include <experimental/map>
 
 class Casino{
     private:

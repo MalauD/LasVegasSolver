@@ -5,8 +5,13 @@
 #include "src/Core/PlayingOrder.hpp"
 #include "src/Eval/GameSetEvaluator.hpp"
 #include "src/Helper/Combinations.hpp"
+#include "src/Cli/Cli.hpp"
 
 int main() {
+
+    Cli cli;
+    cli.Start();
+
     Casino c1 = Casino({Ticket(TicketValues::t80k)}, 1);
     Casino c2 = Casino({Ticket(TicketValues::t50k), Ticket(TicketValues::t30k)}, 2);
     Casino c3 = Casino({Ticket(TicketValues::t60k), Ticket(TicketValues::t20k)}, 3);
@@ -19,21 +24,22 @@ int main() {
         std::cout << c;
     });*/   
     
-    DiceSet ds1 = DiceSet(4,DiceColors::Black,5);
+    DiceSet ds1 = DiceSet(8,DiceColors::Black,5);
+    DiceSet ds2 = DiceSet(8, DiceColors::Blue, 5);
     DiceSet ds3 = DiceSet({
         Dice(DiceColors::Green,4),
-        Dice(DiceColors::Green,6)
+        Dice(DiceColors::Green,5)
     });
 
-    auto po = PlayingOrder({ DiceColors::Black , DiceColors::Green }, DiceColors::Green);
+    auto po = PlayingOrder({ DiceColors::Black , DiceColors::Blue, DiceColors::Green }, DiceColors::Blue);
 
-    GameSet gs = GameSet(Sample, { ds1, ds3 }, po);
-    //gs.PlayFor(DiceColors::Blue, 5);
+    GameSet gs = GameSet(Sample, { ds1, ds2, ds3 }, po);
+    gs.PlayFor(DiceColors::Blue, 5);
 
     GameSetEvaluator gse = GameSetEvaluator();
 
     auto t1 = std::chrono::high_resolution_clock::now();
-    auto res = gse.EvalGameSetFor(gs, DiceColors::Green, 4);
+    auto res = gse.EvalGameSetFor(gs, DiceColors::Green, 3);
     auto t2 = std::chrono::high_resolution_clock::now();
 
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();

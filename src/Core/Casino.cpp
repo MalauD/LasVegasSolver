@@ -70,9 +70,9 @@ int Casino::GetGainByColor(const DiceColors& color) const noexcept
     for (auto v : m_Dices)
         ++diceCountPerColor[v.GetColor()];
 
+
     int DicesCountOfRequest = diceCountPerColor[color];
     diceCountPerColor.erase(color);
-    diceCountPerColor.erase(DiceColors::undefined);
 
     for(const DiceColors& diceColor : AllDiceColors){
         if(sortedTickets.empty()) return 0;

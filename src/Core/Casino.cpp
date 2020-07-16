@@ -67,14 +67,12 @@ int Casino::GetGainByColor(const DiceColors& color) const noexcept
     std::sort(sortedTickets.rbegin(),sortedTickets.rend());
 
     std::map<DiceColors, int> diceCountPerColor;
-
-    std::transform(AllDiceColors.begin(), AllDiceColors.end(), std::inserter(diceCountPerColor, diceCountPerColor.end()),
-        [this](const auto& d) {
-            return std::make_pair(d, GetDicesCountByColor(d));
-        });
+    for (auto v : m_Dices)
+        ++diceCountPerColor[v.GetColor()];
 
     int DicesCountOfRequest = diceCountPerColor[color];
     diceCountPerColor.erase(color);
+    diceCountPerColor.erase(DiceColors::undefined);
 
     for(const DiceColors& diceColor : AllDiceColors){
         if(sortedTickets.empty()) return 0;

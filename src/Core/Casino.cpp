@@ -62,6 +62,7 @@ const std::vector<TicketValues> Casino::GetTicketValues() const
 
 int Casino::GetGainByColor(const DiceColors& color) const noexcept
 {
+    if (m_Tickets.empty()) return 0;
     auto sortedTickets(m_Tickets);
     std::sort(sortedTickets.rbegin(),sortedTickets.rend());
 

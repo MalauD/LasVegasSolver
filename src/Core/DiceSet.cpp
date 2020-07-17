@@ -67,6 +67,11 @@ std::ostream& operator<<(std::ostream& os, const DiceSet& Ds) {
    return os;
 }
 
+void DiceSet::SetTo(std::vector<Dice> Dices)
+{
+    m_Dices = Dices;
+}
+
 Dice& DiceSet::operator[](int index) {
     return m_Dices[index];
 }

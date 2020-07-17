@@ -9,7 +9,7 @@ void StartCommand::Execute(std::vector<std::string> args) {
         return;
     }
     if(args.size() != 3){
-        throw std::runtime_error("Expected 3 arguments for the start command. Example start 3 BGY 30,80/60/50/30,20/90");
+        throw std::runtime_error("Expected 3 arguments for the start command. Example start 3 BGY 30,80/60/50/30,20/90/70");
         return;
     }
 
@@ -18,7 +18,8 @@ void StartCommand::Execute(std::vector<std::string> args) {
 
     std::vector<DiceSet> diceSets;
     std::vector<DiceColors> order;
-    for(const char& c: args[1]) {   
+    for(const char& c: args[1]) {  
+        //TODO Place this in a factory 
         auto it = std::find(AllDiceColorsCmd.begin(), AllDiceColorsCmd.end(),c);
         if(it == AllDiceColorsCmd.end()) throw std::runtime_error("Invalid dice color: " + c);
         auto color = AllDiceColors[std::distance(AllDiceColorsCmd.begin(), it)];
@@ -29,10 +30,11 @@ void StartCommand::Execute(std::vector<std::string> args) {
     auto playingOrder = PlayingOrder(order, order.front());
 
     auto splittedTicketsArg = StringHelper::split(args[2], '/');
-    if(splittedTicketsArg.size() != 5) throw std::runtime_error("Invalid tickets count, need 5");
+    if(splittedTicketsArg.size() != 6) throw std::runtime_error("Invalid tickets count, need 6");
     int cSymbol = 1;
     std::vector<Casino> casinos;
     for(const std::string& casTickets: splittedTicketsArg){
+        //TODO Place this in a factory
         std::vector<Ticket> tickets;
         auto ticketsIn = StringHelper::split(casTickets, ',');
         for(const std::string& t: ticketsIn) {
@@ -44,4 +46,8 @@ void StartCommand::Execute(std::vector<std::string> args) {
         cSymbol++;
     }
     gs.ResetTo(casinos, diceSets, playingOrder);
+
+    std::cout << "Started game with: \n";
+    std::cout << " * " << casinos.size() << " casinos\n";
+    std::cout << " * " << diceSets.size() << " Dice Sets\n";
 }

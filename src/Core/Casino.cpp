@@ -62,15 +62,16 @@ const std::vector<TicketValues> Casino::GetTicketValues() const
 
 int Casino::GetGainByColor(const DiceColors& color) const noexcept
 {
-    if (m_Tickets.empty()) return 0;
+    if (m_Tickets.empty() || m_Dices.empty()) return 0;
     auto sortedTickets(m_Tickets);
     std::sort(sortedTickets.rbegin(),sortedTickets.rend());
 
     std::map<DiceColors, int> diceCountPerColor;
-    if (diceCountPerColor.size() == 0) return 0;
+    
     for (auto v : m_Dices)
         ++diceCountPerColor[v.GetColor()];
 
+    if (diceCountPerColor.size() == 1) return sortedTickets.front().GetValueInt();
 
     int DicesCountOfRequest = diceCountPerColor[color];
     diceCountPerColor.erase(color);
@@ -118,8 +119,9 @@ std::ostream& operator<<(std::ostream& os, const Casino& casino){
     }
     os << " - Current gains by color: \n";
     for (const DiceColors& c : AllDiceColors) {
+        if (c == DiceColors::undefined) continue;
         const auto g = casino.GetGainByColor(c);
-        if (c == DiceColors::undefined || g == 0) continue;
+        if (g == 0) continue;
         os << "   * " << AllDiceColorsPrintable.at(static_cast<int>(c)) << " ";
         os << g << "\n";
     };

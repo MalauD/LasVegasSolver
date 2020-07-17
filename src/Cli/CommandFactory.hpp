@@ -2,6 +2,9 @@
 #include "StatusCommand.hpp"
 #include "PrintCommand.hpp"
 #include "StartCommand.hpp"
+#include "PlayCommand.hpp"
+#include "EvalCommand.hpp"
+#include "DiceCommand.hpp"
 #include "exception"
 
 class CommandFactory {

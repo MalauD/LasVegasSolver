@@ -1,5 +1,7 @@
 #include "BaseCommand.hpp"
 #include "StatusCommand.hpp"
+#include "PrintCommand.hpp"
+#include "StartCommand.hpp"
 #include "exception"
 
 class CommandFactory {

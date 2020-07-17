@@ -9,6 +9,7 @@ class GameSet {
        std::vector<DiceSet> m_PlayerDiceSets;
        PlayingOrder m_PlayingOrder;
    public:
+       GameSet() = default;
        GameSet(std::vector<Casino> Casinos, std::vector<DiceSet> PlayerDiceSets);
        GameSet(std::vector<Casino> Casinos, std::vector<DiceSet> PlayerDiceSets, PlayingOrder playingOrder);
        void AddDiceTo(Dice dice);
@@ -21,4 +22,5 @@ class GameSet {
        void SetDiceSetOf(DiceColors DiceColor, DiceSet newDiceSet);
        void PlayFor(DiceColors playingFor, unsigned int Symbol);
        PlayingOrder& GetPlayingOrder();
+       void ResetTo(std::vector<Casino> Casinos, std::vector<DiceSet> PlayerDiceSets, PlayingOrder playingOrder);
 };

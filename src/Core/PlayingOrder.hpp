@@ -4,8 +4,8 @@
 
 class PlayingOrder {
     private:
-        const std::vector<DiceColors> m_PlayingOrder;
-        int m_ColorPlayingIndex;
+        std::vector<DiceColors> m_PlayingOrder;
+        int m_ColorPlayingIndex = 0;
     public:
         PlayingOrder() = default;
         PlayingOrder(std::vector<DiceColors> m_PlayingOrder, DiceColors ColorToPlayNow);

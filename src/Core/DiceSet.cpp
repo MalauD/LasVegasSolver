@@ -59,7 +59,7 @@ const std::vector<int> DiceSet::GetPossibleOutcomes(DiceSet diceSet) {
     return Outcomes;
 }
 
-std::ostream& operator<<(std::ostream& os, DiceSet& Ds) {
+std::ostream& operator<<(std::ostream& os, const DiceSet& Ds) {
    os << "DiceSet: \n";
    for (const Dice& d : Ds.m_Dices) {
        os << "   * " << d << "\n";

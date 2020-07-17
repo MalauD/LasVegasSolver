@@ -17,7 +17,7 @@ class DiceSet {
        unsigned short GetValueOfFirst() const;
        bool HasSymbol(unsigned short Symbol);
        static const std::vector<int> GetPossibleOutcomes(DiceSet diceSet);
-       friend std::ostream& operator<<(std::ostream& os, DiceSet& Ds);
+       friend std::ostream& operator<<(std::ostream& os, const DiceSet& Ds);
        void SetTo(std::vector<Dice> Dices);
        Dice& operator[](int index);
        int GetDicesCount();

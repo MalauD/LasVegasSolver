@@ -10,8 +10,9 @@ std::unique_ptr<BaseCommand> CommandFactory::GetCommandFromStr(std::string cmd)
     switch (str2int(cmd.c_str()))
     {
         case str2int("status"): return std::unique_ptr<BaseCommand>(new StatusCommand());
+        case str2int("print"): return std::unique_ptr<BaseCommand>(new PrintCommand());
+        case str2int("start"): return std::unique_ptr<BaseCommand>(new StartCommand());
 
-        
         default:
             throw std::exception("Command not implemented");
     }

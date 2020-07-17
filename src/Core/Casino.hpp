@@ -11,8 +11,8 @@
 
 class Casino{
     private:
-        const unsigned short m_CasinoSymbol;
-        const std::vector<Ticket> m_Tickets;
+        unsigned short m_CasinoSymbol;
+        std::vector<Ticket> m_Tickets;
         std::vector<Dice> m_Dices;
     public:
         Casino(const std::vector<Ticket> Tickets, unsigned short CasinoSymbol) noexcept;

@@ -1,7 +1,8 @@
 #include <utility>
-
+#include <sstream>
 #include "BaseCommand.hpp"
 #include "CommandFactory.hpp"
+#include "../Helper/StringHelper.hpp"
 
 class Cli {
     public:

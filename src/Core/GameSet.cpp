@@ -82,3 +82,9 @@ void GameSet::SetDiceSetOf(DiceColors diceColor, DiceSet newDiceSet) {
 PlayingOrder& GameSet::GetPlayingOrder() {
 	return m_PlayingOrder;
 }
+
+void GameSet::ResetTo(std::vector<Casino> Casinos, std::vector<DiceSet> PlayerDiceSets, PlayingOrder playingOrder) {
+	m_Casinos = Casinos;
+	m_PlayerDiceSets = PlayerDiceSets;
+	m_PlayingOrder = playingOrder;
+}

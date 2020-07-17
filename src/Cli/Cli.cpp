@@ -20,20 +20,12 @@ void Cli::Start() {
     } while(true);
 }
 
+
+
 std::pair<std::string, std::vector<std::string>> Cli::CommandSplitter(std::string input) {
     if (input.empty()) throw std::runtime_error("Input no recognized");
-    size_t pos = 0;
-    std::vector<std::string> tokens;
-    std::string delimiter = " ";
-    while ((pos = input.find(delimiter)) != std::string::npos) {
-        tokens.push_back(input.substr(0, pos));
-        input.erase(0, pos + delimiter.length());
-    }
-    std::string cmd;
-    if (tokens.empty()) cmd = input;
-    else {
-        cmd = tokens.front();
-        tokens.erase(tokens.begin());
-    }
-    return std::make_pair(cmd, tokens);
+    auto splittedInput = StringHelper::split(input, ' ');
+    auto cmd = splittedInput.front();
+    splittedInput.erase(splittedInput.begin());
+    return std::make_pair(cmd, splittedInput);
 }

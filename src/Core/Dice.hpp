@@ -30,6 +30,15 @@ static const std::array<std::string, 6> AllDiceColorsPrintable = {
     "Green"
 };
 
+static const std::array<char, 6> AllDiceColorsCmd = {
+    '0',
+    'R',
+    'B',
+    'Y',
+    'N',
+    'G'
+};
+
 class Dice {
     private:
         unsigned short m_Value = 0;

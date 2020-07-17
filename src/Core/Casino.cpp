@@ -115,13 +115,13 @@ std::ostream& operator<<(std::ostream& os, const Casino& casino){
     for (const Dice& d : casino.m_Dices) {
         os << "   * " << d << "\n";
     }
-    os << " - Current gains by color: \n";
+    /*os << " - Current gains by color: \n";
     for (const DiceColors& c : AllDiceColors) {
         const auto g = casino.GetGainByColor(c);
         if (c == DiceColors::undefined || g == 0) continue;
         os << "   * " << AllDiceColorsPrintable.at(static_cast<int>(c)) << " ";
         os << g << "\n";
-    };
+    };*/
     os << "\n";
     return os;
 }

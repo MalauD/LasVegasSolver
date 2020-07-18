@@ -71,9 +71,10 @@ int Casino::GetGainByColor(const DiceColors& color) const noexcept
     for (auto v : m_Dices)
         ++diceCountPerColor[v.GetColor()];
 
-    if (diceCountPerColor.size() == 1) return sortedTickets.front().GetValueInt();
+    
 
     int DicesCountOfRequest = diceCountPerColor[color];
+    if (DicesCountOfRequest == 0) return 0;
     diceCountPerColor.erase(color);
 
     for(const DiceColors& diceColor : AllDiceColors){

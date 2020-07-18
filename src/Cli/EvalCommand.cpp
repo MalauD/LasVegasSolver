@@ -14,6 +14,9 @@ void EvalCommand::Execute(std::vector<std::string> args) {
 
     GameSetEvaluator gse;
     auto& gs = GameSandBox::getInstance().GetGameSet();
+
+    if(gs.GetCasinos().size() == 0 || gs.GetDiceSets().size() == 0) throw std::runtime_error("Cannot eval on undefined game set.");
+
     auto colorPlaying = gs.GetPlayingOrder().GetPlayingNow();
     std::cout << "Evaluating for " << AllDiceColorsPrintable[std::distance(AllDiceColors.begin(), std::find(AllDiceColors.begin(), AllDiceColors.end(), colorPlaying))];
     std::cout << " with a depth of " << depth << "\n";

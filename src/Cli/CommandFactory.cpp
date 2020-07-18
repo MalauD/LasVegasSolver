@@ -15,6 +15,8 @@ std::unique_ptr<BaseCommand> CommandFactory::GetCommandFromStr(std::string cmd)
         case str2int("play"): return std::unique_ptr<BaseCommand>(new PlayCommand());
         case str2int("eval"): return std::unique_ptr<BaseCommand>(new EvalCommand());
         case str2int("dice"): return std::unique_ptr<BaseCommand>(new DiceCommand());
+        case str2int("save"): return std::unique_ptr<BaseCommand>(new SaveCommand());
+        case str2int("open"): return std::unique_ptr<BaseCommand>(new OpenCommand());
         default:
             throw std::exception("Command not implemented");
     }

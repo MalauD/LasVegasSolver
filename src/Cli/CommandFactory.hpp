@@ -5,6 +5,8 @@
 #include "PlayCommand.hpp"
 #include "EvalCommand.hpp"
 #include "DiceCommand.hpp"
+#include "SaveCommand.hpp"
+#include "OpenCommand.hpp"
 #include "exception"
 
 class CommandFactory {

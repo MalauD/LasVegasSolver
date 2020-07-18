@@ -32,6 +32,11 @@ std::vector<Dice> DiceSet::Get(unsigned short ValueToSortOut){
    return dicesToGet;
 }
 
+std::vector<Dice> DiceSet::GetAll()
+{
+    return m_Dices;
+}
+
 DiceColors DiceSet::GetColorOfFirst() const {
     if(m_Dices.empty()) return DiceColors::undefined;
     return m_Dices.front().GetColor();

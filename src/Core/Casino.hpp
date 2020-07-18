@@ -19,6 +19,7 @@ class Casino{
         void AddDice(const Dice& NewDice) noexcept;
         const unsigned short GetCasinoSymbol() const noexcept;
         std::vector<Dice> GetDicesByColor(const DiceColors& Color) const noexcept;
+        std::vector<Dice> GetDices() const noexcept;
         int GetDicesCountByColor(const DiceColors& Color) const;
         int GetSumOfTickets() const noexcept;
         const std::vector<Ticket> GetTickets() const noexcept;

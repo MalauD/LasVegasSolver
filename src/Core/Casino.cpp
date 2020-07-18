@@ -29,6 +29,11 @@ std::vector<Dice> Casino::GetDicesByColor(const DiceColors& Color) const noexcep
     return filteredDices;
 }
 
+std::vector<Dice> Casino::GetDices() const noexcept
+{
+    return m_Dices;
+}
+
 int Casino::GetDicesCountByColor(const DiceColors& Color) const
 {
     return std::count_if(m_Dices.begin(), m_Dices.end(), [&Color](const Dice& d) {

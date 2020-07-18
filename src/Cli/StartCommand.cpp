@@ -1,6 +1,6 @@
 #include "StartCommand.hpp"
 
-/** Example: start 3 BGY 30,80/60/50/30,20/90
+/* Example: start 3 BGY 30,80/60/50/30,20/90
  * 
  */
 void StartCommand::Execute(std::vector<std::string> args) {
@@ -8,17 +8,16 @@ void StartCommand::Execute(std::vector<std::string> args) {
         throw std::runtime_error("No argument specified to start command");
         return;
     }
-    if(args.size() != 3){
-        throw std::runtime_error("Expected 3 arguments for the start command. Example start 3 BGY 30,80/60/50/30,20/90/70");
+    if(args.size() != 2){
+        throw std::runtime_error("Expected 2 arguments for the start command. Example start BGY 30,80/60/50/30,20/90/70");
         return;
     }
 
-    auto playerCount = std::atoi(args[0].c_str());
     auto& gs = GameSandBox::getInstance().GetGameSet();
 
     std::vector<DiceSet> diceSets;
     std::vector<DiceColors> order;
-    for(const char& c: args[1]) {  
+    for(const char& c: args[0]) {  
         //TODO Place this in a factory 
         auto it = std::find(AllDiceColorsCmd.begin(), AllDiceColorsCmd.end(),c);
         if(it == AllDiceColorsCmd.end()) throw std::runtime_error("Invalid dice color: " + c);
@@ -29,7 +28,7 @@ void StartCommand::Execute(std::vector<std::string> args) {
 
     auto playingOrder = PlayingOrder(order, order.front());
 
-    auto splittedTicketsArg = StringHelper::split(args[2], '/');
+    auto splittedTicketsArg = StringHelper::split(args[1], '/');
     if(splittedTicketsArg.size() != 6) throw std::runtime_error("Invalid tickets count, need 6");
     int cSymbol = 1;
     std::vector<Casino> casinos;

@@ -22,3 +22,8 @@ DiceColors PlayingOrder::Advance(int rounds) {
 DiceColors PlayingOrder::GetPlayingNow() {
     return m_PlayingOrder[m_ColorPlayingIndex];
 }
+
+std::vector<DiceColors> PlayingOrder::GetPlayingOrder()
+{
+    return m_PlayingOrder;
+}

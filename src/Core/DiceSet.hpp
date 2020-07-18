@@ -13,6 +13,7 @@ class DiceSet {
        DiceSet(int DiceCount, DiceColors dicesColor, unsigned short dicesVal);
        std::vector<Dice> GetAndRemove(unsigned short ValueToSortOut);
        std::vector<Dice> Get(unsigned short ValueToSortOut);
+       std::vector<Dice> GetAll();
        DiceColors GetColorOfFirst() const;
        unsigned short GetValueOfFirst() const;
        bool HasSymbol(unsigned short Symbol);

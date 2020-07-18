@@ -12,4 +12,5 @@ class PlayingOrder {
         DiceColors EstimatePlayingIn(int rounds);
         DiceColors Advance(int rounds = 1);
         DiceColors GetPlayingNow();
+        std::vector<DiceColors> GetPlayingOrder();
 };
